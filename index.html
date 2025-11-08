@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>helo 世界</title>
+  <style>
+    /* 设置整个网页的背景颜色和字体 */
+    body {
+      background-color: #1e1e1e;
+      font-size: 15px;
+      font-family: 'Microsoft YaHei', Arial, sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    /* 设置搜索框，让其垂直居中 */
+    .search {
+      margin-top: 50px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    /* 从右到左流动文字样式 */
+    .scrolling-text {
+        width: 100%;
+        padding: 12px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+      }
+    
+    .scrolling-text .text {
+      display: inline-block;
+      animation: scroll-left 15s linear infinite;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+    .search input {
+      width: 100%;
+      max-width: 700px;
+      height: 50px;
+      outline: none;
+      font-size: 18px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background-color: #2d2d2d;
+      color: #ffffff;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .search input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    }
+    
+    .buttons-container {
+      margin-top: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .search button {
+      height: 45px;
+      padding: 0 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+    }
+    
+    .search button:hover {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.5);
+    }
+    
+    .search button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* 设置播放器的宽高和背景色 */
+    iframe {
+      display: block;
+      width: 100%;
+      max-width: 1000px;
+      height: 500px;
+      margin: 30px auto;
+      background-color: #000000;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border: none;
+      overflow: hidden;
+    }
+
+    p {
+      color: #cccccc;
+      text-align: center;
+      margin: 20px 0;
+      font-size: 14px;
+      padding: 0 20px;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .search input {
+        width: 100%;
+        max-width: none;
+      }
+      
+      iframe {
+        height: 350px;
+      }
+      
+      .buttons-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .search button {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!--搜索栏-->
+<div class="search">
+  <div class="scrolling-text">
+    <span class="text">小文声明📢📢📢：'非盈利'仅供学习交流，网页内容含有广告切勿相信'</span>
+  </div>
+  <input type="text" id="text">
+  <div class="buttons-container">
+      <button type="button" onclick="input_parse3()">查找</button>
+      <button type="button" onclick="reset()">清空</button>
+      <a href="https://www.douyin.com/user/MS4wLjABAAAAVHFQ8H5r2DSlkvubOHRCXFaaG4E4KCu3eptUdhAaWxNPxhcIZFR9jgzbrhb50Nf5?from_tab_name=main" target="_blank" style="height: 45px; padding: 0 25px; font-size: 16px; cursor: pointer; color: #fff; text-decoration: none; border: 1px solid #667eea; border-radius: 6px; display: inline-block; line-height: 45px; font-weight: 500; transition: all 0.3s ease; background-color: rgba(102, 126, 234, 0.2);">个人主页</a>
+
+    </div>
+</div>
+
+<iframe src="" frameborder="0" id="player" scrolling="no" allowfullscreen allowtransparency></iframe>
+<p>在搜索栏输入地址后，点击查找按钮，点击个人主页可跳转</p>
+
+<script>
+    const _0x28d9b8 = _0x2725;
+    function _0x2725(_0x14a593, _0x55d166) {
+        const _0x5edc91 = _0x5edc();
+        return _0x2725 = function(_0x2725b7, _0xf3fcf0) {
+            _0x2725b7 = _0x2725b7 - 0xbb;
+            let _0x52dcae = _0x5edc91[_0x2725b7];
+            return _0x52dcae;
+        },
+        _0x2725(_0x14a593, _0x55d166);
+    } (function(_0x31e00c, _0x5acf25) {
+        const _0x208716 = _0x2725,
+        _0x1b0757 = _0x31e00c();
+        while ( !! []) {
+            try {
+                const _0x429405 = -parseInt(_0x208716(0xbc)) / 0x1 + -parseInt(_0x208716(0xc1)) / 0x2 + -parseInt(_0x208716(0xcb)) / 0x3 * (parseInt(_0x208716(0xbf)) / 0x4) + parseInt(_0x208716(0xbd)) / 0x5 + parseInt(_0x208716(0xc5)) / 0x6 + -parseInt(_0x208716(0xc3)) / 0x7 * (parseInt(_0x208716(0xbe)) / 0x8) + parseInt(_0x208716(0xc4)) / 0x9;
+                if (_0x429405 === _0x5acf25) break;
+                else _0x1b0757['push'](_0x1b0757['shift']());
+            } catch(_0x720fd7) {
+                _0x1b0757['push'](_0x1b0757['shift']());
+            }
+        }
+    } (_0x5edc, 0x1f7f3));
+    let parse_url = _0x28d9b8(0xcd),
+    parse_url2 = 'aHR0cHM6Ly93d3cucGxheW0zdTguY24vamlleGkucGhwP3VybD0=',
+    parse_url3 = _0x28d9b8(0xc9),
+    input = document[_0x28d9b8(0xcc)](_0x28d9b8(0xcf)),
+    player = document['getElementById']('player');
+    function play(_0x5ae5d3) {
+        const _0x1bb1c9 = _0x28d9b8;
+        player[_0x1bb1c9(0xc2)] = _0x5ae5d3;
+    }
+    function _0x5edc() {
+        const _0x9a8ace = ['aHR0cHM6Ly9zdmlwLmJsamlleC5jYy8/dj0=', 'indexOf', 'text', 'substr', 'keyCode', '176039LCjagB', '291385usxdWD', '1592kcHAar', '3188qDTIaf', 'length', '462336agzEkq', 'src', '1519ziyFVB', '5529447dIQdvF', '329898GFpqxY', 'preventDefault', 'value', 'keyup', 'aHR0cHM6Ly9pbTE5MDcudG9wLz9qeD0=', 'search', '558bjZbnx', 'getElementById'];
+        _0x5edc = function() {
+            return _0x9a8ace;
+        };
+        return _0x5edc();
+    }
+    function input_parse1() {
+        let _0x4d309f = atob(parse_url) + input['value'];
+        play(_0x4d309f);
+    }
+    function input_parse2() {
+        const _0x5649bb = _0x28d9b8;
+        let _0x47040c = atob(parse_url2) + input[_0x5649bb(0xc7)];
+        play(_0x47040c);
+    }
+    function input_parse3() {
+        const _0x4dd4b4 = _0x28d9b8;
+        let _0x19c0b2 = atob(parse_url3) + input[_0x4dd4b4(0xc7)];
+        play(_0x19c0b2);
+    }
+    function reset() {
+        input['value'] = '';
+    }
+    input['addEventListener'](_0x28d9b8(0xc8),
+    function(_0x32b858) {
+        const _0x32cd55 = _0x28d9b8;
+        _0x32b858[_0x32cd55(0xc6)]();
+        if (_0x32b858['keyCode'] === 0xd) input_parse();
+        else _0x32b858[_0x32cd55(0xbb)] === 0x1b && reset();
+    });
+    let tmp = location[_0x28d9b8(0xca)],
+    href = tmp[_0x28d9b8(0xd0)](tmp[_0x28d9b8(0xce)]('?')),
+    reg = 'url=([^&]*)',
+    match_result = href['match'](reg);
+    if (match_result !== null && match_result[0x0] && match_result[0x0][_0x28d9b8(0xc0)] > 0x4) {
+        let url = match_result[0x0];
+        url = url[_0x28d9b8(0xd0)](url[_0x28d9b8(0xce)]('url=') + 0x4);
+        location_parse(url);
+    }
+    function location_parse(_0x1acf24) {
+        let _0x54df90 = parse_url + _0x1acf24;
+        play(_0x54df90),
+        input['value'] = _0x1acf24;
+    }
+</script>
+
+</body>
+</html>
+
+
