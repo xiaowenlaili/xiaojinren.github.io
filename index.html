@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>VIP视频解析</title>
+  <style>
+    /* 设置整个网页的背景颜色和Flexbox布局 */
+    body {
+      background-color: #505050;
+      font-size: 15px;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    /* 提示文字样式并放大 */
+    .tip {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+    /* 设置搜索框，让其居中显示并放大尺寸 */
+    .search {
+      text-align: center;
+      z-index: 10;
+    }
+    .search input {
+      width: 600px;
+      height: 40px;
+      outline: none;
+      font-size: 18px;
+      padding: 5px 10px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+    }
+    /* 按钮容器样式 */
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+      z-index: 10;
+    }
+    .buttons button {
+      height: 52px;
+      font-size: 18px;
+      padding: 0 20px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin: 0 5px;
+      border-radius: 5px;
+    }
+    .buttons button:first-child {
+      background-color: #4CAF50;
+    }
+    .buttons button:nth-child(2) {
+      background-color: #f44336;
+    }
+    .buttons button:last-child {
+      background-color: #2196F3;
+    }
+    /* 移除了播放器样式 */
+
+    p {
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .tip {
+        position: relative;
+        top: auto;
+        left: auto;
+        text-align: center;
+        margin: 15px;
+      }
+      .search {
+        margin-top: 20px;
+      }
+      .search input {
+        width: 90%;
+        max-width: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!--提示文字-->
+<div class="tip">小文声明📢📢：'非盈利'仅供学习交流，网页内容含有广告切勿相信</div>
+
+<!--搜索栏-->
+<div class="search">
+  <input type="text" id="text">
+</div>
+<div class="buttons">
+  <button type="button" onclick="input_parse3()">点击观看</button>
+  <button type="button" onclick="reset()">清空</button>
+  <button type="button" onclick="window.open('https://www.douyin.com/user/MS4wLjABAAAAVHFQ8H5r2DSlkvubOHRCXFaaG4E4KCu3eptUdhAaWxNPxhcIZFR9jgzbrhb50Nf5?from_tab_name=main', '_blank')">点击链接</button>
+</div>
+
+<!-- 移除了播放器iframe -->
+<p>在搜索栏输入地址后，按回车键即可解析，按Esc可以清空地址栏</p>
+
+<script>
+    // 从混淆代码中提取的解析URL
+    const parse_url = atob('aHR0cHM6Ly9zdmlwLmJsamlleC5jYy8/dj0=');
+    const parse_url2 = atob('aHR0cHM6Ly93d3cucGxheW0zdTguY24vamlleGkucGhwP3VybD0=');
+    const parse_url3 = atob('aHR0cHM6Ly9pbTE5MDcudG9wLz9qeD0=');
+    
+    // 获取DOM元素
+    const input = document.getElementById('text');
+    
+    // 播放函数 - 修改为在新标签页打开解析后的URL
+    function play(url) {
+        window.open(url, '_blank');
+    }
+    
+    // 解析函数
+    function input_parse1() {
+        if (!input.value.trim()) return; // 空值检查
+        const url = parse_url + input.value;
+        play(url);
+    }
+    
+    function input_parse2() {
+        if (!input.value.trim()) return; // 空值检查
+        const url = parse_url2 + input.value;
+        play(url);
+    }
+    
+    function input_parse3() {
+        if (!input.value.trim()) return; // 空值检查
+        const url = parse_url3 + input.value;
+        play(url);
+    }
+    
+    // 清空函数
+    function reset() {
+        input.value = '';
+    }
+    
+    // 键盘事件处理
+    input.addEventListener('keyup', function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) { // 回车键
+            input_parse1();
+        } else if (event.keyCode === 27) { // Esc键
+            reset();
+        }
+    });
+    
+    // URL参数处理
+    function location_parse(url) {
+        const fullUrl = parse_url + url;
+        play(fullUrl);
+        input.value = url;
+    }
+    
+    // 从URL参数初始化
+    try {
+        const tmp = location.search;
+        const reg = /url=([^&]*)/;
+        const matchResult = tmp.match(reg);
+        
+        if (matchResult && matchResult[1]) {
+            const encodedUrl = matchResult[1];
+            // 尝试解码URL（有些系统可能会进行双重编码）
+            try {
+                const url = decodeURIComponent(encodedUrl);
+                location_parse(url);
+            } catch (e) {
+                // 如果解码失败，直接使用原始匹配结果
+                location_parse(encodedUrl);
+            }
+        }
+    } catch (error) {
+        console.error('URL参数处理错误:', error);
+        // 错误处理，不阻止页面加载
+    }
+</script>
+
+</body>
+</html>
+
+
