@@ -145,6 +145,28 @@
       z-index: 100;
     }
     
+    /* 登出按钮样式 */
+    .logout-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      background-color: rgba(255, 107, 107, 0.8);
+      color: white;
+      border: 2px solid #ff6b6b;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    
+    .logout-button:hover {
+      background-color: rgba(255, 107, 107, 1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+    }
+    
     /* 设置搜索框，让其垂直居中 */
     .search {
       margin-top: 50px;
@@ -308,6 +330,8 @@
 <div class="content" id="mainContent">
   <!-- 欢迎信息容器 -->
   <div class="welcome-message" id="welcomeMessage"></div>
+  <!-- 登出按钮 -->
+  <button id="logoutButton" class="logout-button" onclick="handleLogout()">退出登录</button>
   
   <!--搜索栏区域-->
   <div class="search">
@@ -323,8 +347,8 @@
     <div class="buttons-container">
         <button type="button" onclick="input_parse3()">查找</button>
         <button type="button" onclick="reset()">清空</button>
-        <!-- 个人主页链接 -->
-        <a href="https://www.douyin.com/user/MS4wLjABAAAAVHFQ8H5r2DSlkvubOHRCXFaaG4E4KCu3eptUdhAaWxNPxhcIZFR9jgzbrhb50Nf5?from_tab_name=main" target="_blank" style="height: 45px; padding: 0 25px; font-size: 16px; cursor: pointer; color: #fff; text-decoration: none; border: 1px solid #667eea; border-radius: 8px; display: inline-block; line-height: 45px; font-weight: 500; transition: all 0.3s ease; background-color: rgba(102, 126, 234, 0.2);">个人主页</a>
+        <!-- 链接 -->
+        <a href="https://qqqys.com/" style="height: 45px; padding: 0 25px; font-size: 16px; cursor: pointer; color: #fff; text-decoration: none; border: 1px solid #667eea; border-radius: 8px; display: inline-block; line-height: 45px; font-weight: 500; transition: all 0.3s ease; background-color: rgba(102, 126, 234, 0.2);">其它平台观看</a>
     </div>
   </div>
 
@@ -332,7 +356,7 @@
   <iframe src="" frameborder="0" id="player" scrolling="no" allowfullscreen allowtransparency></iframe>
   
   <!-- 操作提示文本 -->
-  <p>在搜索栏输入地址后，点击查找按钮，点击个人主页可跳转</p>
+  <p>在搜索栏输入地址后，点击查找按钮</p>
 
   <!-- URL解析和播放功能脚本 -->
   <script>
@@ -454,7 +478,7 @@
       // 预定义的账号密码组合
       const validCredentials = {
         'yangmei': '666',
-        'wen': '888',  // 设为管理员账号
+        '文': '888',  // 设为管理员账号
         'yue': '888',
         'tin': '888',
         'juan': '888'
@@ -464,17 +488,42 @@
       let failedAttempts = localStorage.getItem('loginFailedAttempts') || 0;
       failedAttempts = parseInt(failedAttempts);
       
+      // 获取锁定时间
+      const lockoutTime = localStorage.getItem('loginLockoutTime');
+      const currentTime = new Date().getTime();
+      
+      // 检查是否在锁定时间内（非管理员账号才受锁定限制）
+      const isAdmin = username === '文';
+      if (lockoutTime && currentTime < parseInt(lockoutTime) && !isAdmin) {
+        const remainingSeconds = Math.ceil((parseInt(lockoutTime) - currentTime) / 1000);
+        const hours = Math.floor(remainingSeconds / 3600);
+        const minutes = Math.floor((remainingSeconds % 3600) / 60);
+        const seconds = remainingSeconds % 60;
+        errorElement.textContent = `账号已被锁定，请${hours}小时${minutes}分钟${seconds}秒后再试`;
+        return;
+      }
+      
+      // 如果锁定时间已过，清除锁定状态
+      if (lockoutTime && currentTime >= parseInt(lockoutTime)) {
+        localStorage.removeItem('loginLockoutTime');
+        localStorage.removeItem('loginFailedAttempts');
+        failedAttempts = 0;
+      }
+      
       // 检查是否超过5次失败，且当前不是管理员账号
-      const isAdmin = username === 'wen';
       if (failedAttempts >= 5 && !isAdmin) {
-        errorElement.textContent = '登录失败次数过多，请使用管理员账号登录';
+        // 设置24小时锁定时间
+        const lockoutUntil = currentTime + 24 * 60 * 60 * 1000;
+        localStorage.setItem('loginLockoutTime', lockoutUntil.toString());
+        errorElement.textContent = '登录失败次数过多，账号已被锁定24小时，请使用管理员账号登录';
         return;
       }
       
       // 验证账号密码
       if (validCredentials[username] && validCredentials[username] === password) {
-        // 登录成功，重置失败次数
+        // 登录成功，重置失败次数和锁定状态
         localStorage.removeItem('loginFailedAttempts');
+        localStorage.removeItem('loginLockoutTime');
         
         // 设置4小时过期时间
         const expiryTime = new Date().getTime() + 4 * 60 * 60 * 1000; // 4小时后过期
@@ -495,12 +544,15 @@
         failedAttempts++;
         localStorage.setItem('loginFailedAttempts', failedAttempts.toString());
         
-        // 显示剩余尝试次数或锁定提示
-        const remainingAttempts = Math.max(0, 5 - failedAttempts);
-        if (remainingAttempts > 0) {
-          errorElement.textContent = '账号或密码错误，请重试。剩余尝试次数：' + remainingAttempts;
+        // 检查是否达到锁定条件
+        if (failedAttempts >= 5 && username !== '文') {
+          const lockoutUntil = currentTime + 24 * 60 * 60 * 1000;
+          localStorage.setItem('loginLockoutTime', lockoutUntil.toString());
+          errorElement.textContent = '登录失败次数过多，账号已被锁定24小时，请使用管理员账号登录';
         } else {
-          errorElement.textContent = '登录失败次数过多，请使用管理员账号登录';
+          // 显示剩余尝试次数
+          const remainingAttempts = Math.max(0, 5 - failedAttempts);
+          errorElement.textContent = '账号或密码错误，请重试。剩余尝试次数：' + remainingAttempts;
         }
       }
     }
@@ -547,6 +599,32 @@
     
     // 设置页面背景色为深色
     document.body.style.backgroundColor = '#1e1e1e';
+    
+    // 登出功能处理函数
+    function handleLogout() {
+      // 清除登录相关的所有本地存储数据
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('loginExpiry');
+      localStorage.removeItem('currentUser');
+      // 清除可能的锁定状态（仅管理员可以清除）
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser === '文') {
+        localStorage.removeItem('loginLockoutTime');
+        localStorage.removeItem('loginFailedAttempts');
+      }
+      
+      // 重置登录表单
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      document.getElementById('loginError').textContent = '';
+      
+      // 显示登录界面，隐藏主内容
+      document.getElementById('loginContainer').style.display = 'flex';
+      document.getElementById('mainContent').style.display = 'none';
+      
+      // 刷新页面以确保完全重置状态
+      location.reload();
+    }
 </script>
 
 <!-- 矩阵雨效果代码 -->
