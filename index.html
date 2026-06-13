@@ -5,6 +5,184 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>API平台</title>
   <style>
+    :root {
+      /* 暗色主题（默认） */
+      --bg-gradient: radial-gradient(circle at 20% 30%, #1a1f2e, #0b0f1c);
+      --bg-glow1: rgba(100, 140, 255, 0.25);
+      --bg-glow2: rgba(180, 130, 255, 0.2);
+      --container-bg: rgba(255, 255, 255, 0.08);
+      --container-border: rgba(255, 255, 255, 0.2);
+      --container-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15), inset 0 0 30px rgba(255, 255, 255, 0.05);
+      --hero-bg: rgba(255, 255, 255, 0.06);
+      --hero-border: rgba(255, 255, 255, 0.15);
+      --title-color: rgba(255, 255, 255, 0.85);
+      --title-shadow: 0 4px 12px rgba(0, 160, 255, 0.5);
+      --title-gradient: linear-gradient(135deg, #ffffff, #b8d0ff);
+      --panel-bg: rgba(20, 25, 45, 0.45);
+      --panel-border: rgba(255, 255, 255, 0.1);
+      --panel-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      --label-color: rgba(220, 225, 255, 0.9);
+      --label-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      --input-bg: rgba(10, 15, 25, 0.55);
+      --input-border: rgba(255, 255, 255, 0.25);
+      --input-color: #ffffff;
+      --input-placeholder: rgba(200, 210, 240, 0.6);
+      --input-focus-border: #6d8eff;
+      --input-focus-bg: rgba(15, 20, 35, 0.7);
+      --input-focus-shadow: 0 0 18px rgba(80, 140, 255, 0.7), 0 8px 20px rgba(0, 0, 0, 0.5);
+      --input-inner-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1);
+      --input-outer-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+      --btn-bg: rgba(40, 70, 180, 0.7);
+      --btn-border: rgba(255, 255, 255, 0.35);
+      --btn-color: white;
+      --btn-shadow: 0 10px 20px rgba(0, 80, 255, 0.4), 0 0 10px rgba(100, 160, 255, 0.5);
+      --btn-hover-bg: rgba(55, 95, 230, 0.8);
+      --btn-hover-shadow: 0 12px 28px rgba(0, 120, 255, 0.7), 0 0 20px #3f7eff;
+      --btn-hover-border: rgba(255, 255, 255, 0.5);
+      --btn-active-bg: rgba(30, 60, 160, 0.8);
+      --badge-bg: rgba(255, 255, 255, 0.08);
+      --badge-border: rgba(255, 255, 255, 0.25);
+      --badge-color: #d0ddff;
+      --badge-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      --badge-hover-bg: rgba(90, 130, 255, 0.25);
+      --badge-hover-color: #ffffff;
+      --badge-hover-border: rgba(255, 255, 255, 0.5);
+      --badge-hover-shadow: 0 0 15px rgba(70, 130, 255, 0.6);
+      --info-color: rgba(200, 210, 240, 0.7);
+      --video-bg: rgba(0, 0, 0, 0.4);
+      --video-border: rgba(255, 255, 255, 0.15);
+      --video-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      --selector-bg: rgba(20, 25, 40, 0.6);
+      --selector-border: rgba(255, 255, 255, 0.25);
+      --selector-shadow: 0 8px 18px rgba(0, 0, 0, 0.5), 0 0 10px rgba(70, 130, 255, 0.3);
+      --selector-hover-border: rgba(255, 255, 255, 0.45);
+      --selector-hover-shadow: 0 10px 22px rgba(0, 0, 0, 0.6), 0 0 18px #3f7eff;
+      --mini-label-color: #cad6ff;
+      --mini-label-shadow: 0 2px 6px black;
+      --select-bg: rgba(18, 22, 38, 0.7);
+      --select-border: rgba(255, 255, 255, 0.3);
+      --select-color: #f0f4ff;
+      --select-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      --select-hover-border: rgba(255, 255, 255, 0.6);
+      --select-hover-bg: rgba(30, 40, 70, 0.7);
+      --select-focus-border: #5c8aff;
+      --select-focus-shadow: 0 0 14px rgba(70, 130, 255, 0.8);
+      --select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23b8c7ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      --status-bg: rgba(20, 30, 50, 0.55);
+      --status-border: rgba(255, 255, 255, 0.2);
+      --status-color: #e0e7ff;
+      --status-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --status-error-color: #ffb4b4;
+      --status-error-bg: rgba(180, 40, 40, 0.4);
+      --footer-bg: rgba(0, 0, 0, 0.2);
+      --footer-border: rgba(255, 255, 255, 0.15);
+      --footer-color: rgba(200, 210, 240, 0.7);
+      --blocker-bg: radial-gradient(circle at 20% 30%, #0b0f1c, #03060c);
+      --blocker-card-bg: rgba(15, 20, 35, 0.8);
+      --blocker-card-border: rgba(255, 255, 255, 0.25);
+      --blocker-card-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.2);
+      --blocker-title-gradient: linear-gradient(135deg, #FFFFFF, #A0B3FF);
+      --blocker-sub-color: #cdd9ff;
+      --blocker-desc-color: #bcc8ff;
+      --blocker-desc-bg: rgba(0, 0, 0, 0.4);
+      --blocker-note-color: #8a9bc0;
+      --img-shadow: drop-shadow(0 8px 12px rgba(0, 160, 255, 0.5));
+      --btn-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+      --theme-toggle-bg: rgba(255, 255, 255, 0.1);
+      --theme-toggle-border: rgba(255, 255, 255, 0.2);
+      --theme-toggle-color: #ffffff;
+      --theme-toggle-hover-bg: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 亮色主题 */
+    [data-theme="light"] {
+      --bg-gradient: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 30%, #f0f0f5 60%, #e5e5ea 100%);
+      --bg-glow1: rgba(0, 122, 255, 0.08);
+      --bg-glow2: rgba(175, 82, 222, 0.06);
+      --container-bg: rgba(255, 255, 255, 0.45);
+      --container-border: rgba(0, 0, 0, 0.06);
+      --container-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.5) inset, 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02), 0 8px 32px rgba(0, 0, 0, 0.03);
+      --hero-bg: rgba(255, 255, 255, 0.25);
+      --hero-border: rgba(0, 0, 0, 0.05);
+      --title-color: #1d1d1f;
+      --title-shadow: none;
+      --title-gradient: linear-gradient(135deg, #1d1d1f 0%, #3a3a3c 100%);
+      --panel-bg: rgba(255, 255, 255, 0.3);
+      --panel-border: rgba(0, 0, 0, 0.04);
+      --panel-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.4) inset, 0 2px 8px rgba(0, 0, 0, 0.02);
+      --label-color: #6e6e73;
+      --label-shadow: none;
+      --input-bg: rgba(255, 255, 255, 0.65);
+      --input-border: rgba(0, 0, 0, 0.06);
+      --input-color: #1d1d1f;
+      --input-placeholder: #98989d;
+      --input-focus-border: rgba(0, 122, 255, 0.3);
+      --input-focus-bg: rgba(255, 255, 255, 0.8);
+      --input-focus-shadow: 0 0 0 3px rgba(0, 122, 255, 0.06), 0 2px 8px rgba(0, 122, 255, 0.06);
+      --input-inner-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+      --input-outer-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+      --btn-bg: #007aff;
+      --btn-border: none;
+      --btn-color: #ffffff;
+      --btn-shadow: 0 2px 8px rgba(0, 122, 255, 0.15), 0 0 0 0.5px rgba(0, 0, 0, 0.05) inset;
+      --btn-hover-bg: #0070e9;
+      --btn-hover-shadow: 0 4px 14px rgba(0, 122, 255, 0.25), 0 0 0 0.5px rgba(0, 0, 0, 0.06) inset;
+      --btn-hover-border: none;
+      --btn-active-bg: #0060d0;
+      --badge-bg: rgba(255, 255, 255, 0.55);
+      --badge-border: rgba(0, 0, 0, 0.05);
+      --badge-color: #1d1d1f;
+      --badge-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      --badge-hover-bg: rgba(255, 255, 255, 0.75);
+      --badge-hover-color: #007aff;
+      --badge-hover-border: rgba(0, 122, 255, 0.2);
+      --badge-hover-shadow: 0 2px 8px rgba(0, 122, 255, 0.08);
+      --info-color: #98989d;
+      --video-bg: rgba(0, 0, 0, 0.02);
+      --video-border: rgba(0, 0, 0, 0.05);
+      --video-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.3) inset, 0 4px 16px rgba(0, 0, 0, 0.03);
+      --selector-bg: rgba(255, 255, 255, 0.5);
+      --selector-border: rgba(0, 0, 0, 0.05);
+      --selector-shadow: 0 1px 6px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+      --selector-hover-border: rgba(0, 122, 255, 0.2);
+      --selector-hover-shadow: 0 2px 10px rgba(0, 122, 255, 0.06);
+      --mini-label-color: #86868b;
+      --mini-label-shadow: none;
+      --select-bg: rgba(255, 255, 255, 0.6);
+      --select-border: rgba(0, 0, 0, 0.06);
+      --select-color: #1d1d1f;
+      --select-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+      --select-hover-border: rgba(0, 122, 255, 0.25);
+      --select-hover-bg: rgba(255, 255, 255, 0.75);
+      --select-focus-border: rgba(0, 122, 255, 0.35);
+      --select-focus-shadow: 0 0 0 3px rgba(0, 122, 255, 0.06);
+      --select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238e8e93' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      --status-bg: rgba(255, 255, 255, 0.5);
+      --status-border: rgba(0, 0, 0, 0.04);
+      --status-color: #86868b;
+      --status-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      --status-error-color: #ff3b30;
+      --status-error-bg: rgba(255, 59, 48, 0.05);
+      --footer-bg: rgba(255, 255, 255, 0.15);
+      --footer-border: rgba(0, 0, 0, 0.04);
+      --footer-color: #98989d;
+      --blocker-bg: rgba(242, 242, 247, 0.85);
+      --blocker-card-bg: rgba(255, 255, 255, 0.55);
+      --blocker-card-border: rgba(0, 0, 0, 0.04);
+      --blocker-card-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.4) inset, 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 40px rgba(0, 0, 0, 0.04);
+      --blocker-title-gradient: linear-gradient(135deg, #1d1d1f, #1d1d1f);
+      --blocker-sub-color: #86868b;
+      --blocker-desc-color: #86868b;
+      --blocker-desc-bg: rgba(0, 0, 0, 0.02);
+      --blocker-note-color: #98989d;
+      --img-shadow: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+      --btn-text-shadow: none;
+      --theme-toggle-bg: rgba(0, 0, 0, 0.05);
+      --theme-toggle-border: rgba(0, 0, 0, 0.1);
+      --theme-toggle-color: #1d1d1f;
+      --theme-toggle-hover-bg: rgba(0, 0, 0, 0.08);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -12,62 +190,174 @@
     }
 
     body {
-      background-color: #f5f6f8;
+      background: var(--bg-gradient);
       font-family: 'Segoe UI', 'Poppins', 'Roboto', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 1.5rem 1rem;
+      position: relative;
+      overflow-x: hidden;
+      transition: background 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    /* 正常PC内容容器 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -20%;
+      left: -10%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle at 30% 40%, var(--bg-glow1), transparent 60%);
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+      transition: background 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -15%;
+      right: -5%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle at 70% 70%, var(--bg-glow2), transparent 60%);
+      filter: blur(70px);
+      z-index: 0;
+      pointer-events: none;
+      transition: background 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    /* 主题切换按钮 */
+    .theme-toggle-wrapper {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+    }
+
+    .theme-toggle {
+      background: var(--theme-toggle-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--theme-toggle-border);
+      border-radius: 2.5rem;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--theme-toggle-color);
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      letter-spacing: 0.3px;
+      border: 1px solid var(--theme-toggle-border);
+    }
+
+    .theme-toggle:hover {
+      background: var(--theme-toggle-hover-bg);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.96);
+      transition: all 0.1s;
+    }
+
+    .theme-icon {
+      font-size: 1.2rem;
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    [data-theme="light"] .theme-icon {
+      transform: rotate(180deg);
+    }
+
+    /* 液态玻璃主容器 */
     .player-container {
       max-width: 1300px;
       width: 100%;
-      background: #ffffff;
-      border-radius: 1.5rem;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+      background: var(--container-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 2.5rem;
+      box-shadow: var(--container-shadow);
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
       display: flex;
       flex-direction: column;
+      position: relative;
+      z-index: 2;
+      border: 1px solid var(--container-border);
     }
 
     .hero {
-      background: #ffffff;
+      background: var(--hero-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       padding: 0.8rem 0.8rem;
-      border-bottom: 1px solid #e8eaed;
+      border-bottom: 1px solid var(--hero-border);
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .img1 {
-      width: 70px;
-      height: 70px;
-      text-align: left;
+      width: 60px;
+      height: 60px;
+      filter: var(--img-shadow);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .img1:hover {
+      transform: scale(1.05);
     }
 
     .sub {
-      color: #5f6368;
-      margin-top: 0.8rem;
+      color: var(--title-color);
+      margin-top: 0.2rem;
       font-size: 2.5rem;
-      opacity: 0.9;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: var(--title-shadow);
+      background: var(--title-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .control-panel {
-      padding: 1rem 2rem 1.2rem;
-      background: #fafbfc;
-      border-bottom: 1px solid #e8eaed;
+      padding: 1.5rem 2rem 1.2rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--panel-border);
+      margin: 0.8rem 1.5rem;
+      border-radius: 2rem;
+      background: var(--panel-bg);
+      box-shadow: var(--panel-shadow);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .label-style {
       display: block;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #5f6368;
-      margin-bottom: 0.6rem;
+      letter-spacing: 1.5px;
+      color: var(--label-color);
+      margin-bottom: 0.8rem;
+      text-shadow: var(--label-shadow);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .input-group {
@@ -85,56 +375,69 @@
 
     .url-input {
       width: 100%;
-      background: #ffffff;
-      border: 1px solid #dadce0;
-      border-radius: 0.75rem;
-      padding: 0.85rem 1.5rem;
+      background: var(--input-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--input-border);
+      border-radius: 1.2rem;
+      padding: 0.9rem 1.5rem;
       font-size: 1rem;
-      color: #202124;
-      transition: all 0.2s;
+      color: var(--input-color);
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
       font-family: monospace;
+      box-shadow: var(--input-outer-shadow), var(--input-inner-shadow);
+      letter-spacing: 0.5px;
+    }
+
+    .url-input::placeholder {
+      color: var(--input-placeholder);
+      font-family: system-ui;
+      transition: color 0.5s;
     }
 
     .url-input:focus {
       outline: none;
-      border-color: #1a73e8;
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
-    }
-
-    .url-input::placeholder {
-      color: #9aa0a6;
-      font-family: system-ui;
+      border-color: var(--input-focus-border);
+      background: var(--input-focus-bg);
+      box-shadow: var(--input-focus-shadow);
     }
 
     .btn-primary {
-      background: #1a73e8;
-      border: none;
-      border-radius: 0.75rem;
-      padding: 0.85rem 1.8rem;
+      background: var(--btn-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--btn-border);
+      border-radius: 1.2rem;
+      padding: 0.9rem 2rem;
       font-weight: 700;
       font-size: 1rem;
-      color: white;
+      color: var(--btn-color);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
       display: inline-flex;
       align-items: center;
       gap: 8px;
       white-space: nowrap;
+      box-shadow: var(--btn-shadow);
+      text-shadow: var(--btn-text-shadow);
+      letter-spacing: 1px;
     }
 
     .btn-primary:hover {
-      background: #1557b0;
-      transform: translateY(-1px);
+      background: var(--btn-hover-bg);
+      box-shadow: var(--btn-hover-shadow);
+      transform: translateY(-2px);
+      border-color: var(--btn-hover-border);
     }
 
     .btn-primary:active {
-      transform: translateY(0);
-      background: #174ea6;
+      transform: translateY(0) scale(0.97);
+      background: var(--btn-active-bg);
+      transition: all 0.1s;
     }
 
     .examples {
-      margin-top: 1.5rem;
+      margin-top: 1.8rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
@@ -142,44 +445,53 @@
     }
 
     .example-badge {
-      background: #f1f3f4;
-      border-radius: 0.5rem;
-      padding: 0.4rem 1rem;
+      background: var(--badge-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      padding: 0.4rem 1.2rem;
       font-size: 0.8rem;
-      color: #5f6368;
+      color: var(--badge-color);
       cursor: pointer;
-      transition: all 0.2s;
-      border: 1px solid #dadce0;
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+      border: 1px solid var(--badge-border);
       text-decoration: none;
       display: inline-block;
+      font-weight: 500;
+      box-shadow: var(--badge-shadow);
     }
 
     .example-badge:hover {
-      background: #e8eaed;
-      color: #202124;
-      border-color: #bdc1c6;
+      background: var(--badge-hover-bg);
+      color: var(--badge-hover-color);
+      border-color: var(--badge-hover-border);
+      box-shadow: var(--badge-hover-shadow);
     }
 
     .info-note {
       font-size: 0.75rem;
-      color: #80868b;
+      color: var(--info-color);
       margin-left: auto;
+      transition: color 0.5s;
     }
 
     .player-area {
-      padding: 0 0.8rem 1rem 0.8rem;
+      padding: 0 1.2rem 1.2rem 1.2rem;
       position: relative;
     }
 
     .video-frame-wrapper {
-      background: #000000;
-      border-radius: 0.75rem;
+      background: var(--video-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 1.5rem;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border: 1px solid #e8eaed;
+      box-shadow: var(--video-shadow);
+      border: 1px solid var(--video-border);
       aspect-ratio: 16 / 9;
       width: 100%;
       position: relative;
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     #videoFrame {
@@ -194,213 +506,217 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: 0.1rem 0.5rem 0.2rem 0.5rem;
+      padding: 0.3rem 0.8rem 0.3rem 0.5rem;
     }
 
     .interface-mini-selector {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      background: #ffffff;
-      padding: 0.4rem 1rem 0.4rem 1.2rem;
-      border-radius: 0.75rem;
-      border: 1px solid #dadce0;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-      transform: scale(0.9);
+      gap: 0.6rem;
+      background: var(--selector-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 0.4rem 1.2rem 0.4rem 1.4rem;
+      border-radius: 2rem;
+      border: 1px solid var(--selector-border);
+      box-shadow: var(--selector-shadow);
+      transform: scale(0.92);
       transform-origin: right center;
-      transition: transform 0.2s;
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .interface-mini-selector:hover {
-      transform: scale(0.93);
-      border-color: #bdc1c6;
+      transform: scale(0.95);
+      border-color: var(--selector-hover-border);
+      box-shadow: var(--selector-hover-shadow);
     }
 
     .mini-label {
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #5f6368;
+      letter-spacing: 1px;
+      color: var(--mini-label-color);
       white-space: nowrap;
-      opacity: 0.9;
+      text-shadow: var(--mini-label-shadow);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .custom-select-mini {
-      background: #f8f9fa;
-      border: 1px solid #dadce0;
-      border-radius: 0.5rem;
-      padding: 0.4rem 2rem 0.4rem 0.9rem;
-      font-size: 0.75rem;
+      background: var(--select-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--select-border);
+      border-radius: 2rem;
+      padding: 0.5rem 2.2rem 0.5rem 1rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      color: #202124;
+      color: var(--select-color);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
       appearance: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235f6368' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+      background-image: var(--select-arrow);
       background-repeat: no-repeat;
       background-position: right 0.6rem center;
       background-size: 14px;
       width: auto;
       min-width: 150px;
+      box-shadow: var(--select-shadow);
     }
 
     .custom-select-mini:hover {
-      border-color: #bdc1c6;
-      background-color: #f1f3f4;
+      border-color: var(--select-hover-border);
+      background-color: var(--select-hover-bg);
     }
 
     .custom-select-mini:focus {
       outline: none;
-      border-color: #1a73e8;
-      box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+      border-color: var(--select-focus-border);
+      box-shadow: var(--select-focus-shadow);
     }
 
     .status-text {
-      margin-top: 0.6rem;
+      margin-top: 0.8rem;
       font-size: 0.8rem;
       text-align: center;
-      color: #5f6368;
-      background: #f8f9fa;
+      color: var(--status-color);
+      background: var(--status-bg);
+      backdrop-filter: blur(8px);
       display: inline-block;
-      padding: 0.35rem 1rem;
-      border-radius: 0.5rem;
+      padding: 0.45rem 1.4rem;
+      border-radius: 2rem;
       width: fit-content;
       margin-left: auto;
       margin-right: auto;
+      border: 1px solid var(--status-border);
+      box-shadow: var(--status-shadow);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .status-error {
+      color: var(--status-error-color) !important;
+      background: var(--status-error-bg) !important;
     }
 
     footer {
       text-align: center;
-      padding: 1rem 2rem 1.5rem;
+      padding: 1.2rem 2rem 1.5rem;
       font-size: 0.75rem;
-      color: #80868b;
-      border-top: 1px solid #e8eaed;
+      color: var(--footer-color);
+      border-top: 1px solid var(--footer-border);
       margin-top: 0.2rem;
+      background: var(--footer-bg);
+      backdrop-filter: blur(8px);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
-    /* 移动端拦截遮罩层 */
+    /* 移动端拦截遮罩 */
     .mobile-blocker {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, #0b0f1c, #03060c);
-      backdrop-filter: blur(8px);
+      background: var(--blocker-bg);
+      backdrop-filter: blur(12px);
       z-index: 10000;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+      transition: background 0.5s;
     }
 
     .blocker-card {
-      background: rgba(20, 25, 40, 0.95);
-      backdrop-filter: blur(16px);
-      border-radius: 2.5rem;
+      background: var(--blocker-card-bg);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-radius: 3rem;
       max-width: 90%;
       width: 460px;
-      padding: 2.5rem 2rem;
+      padding: 2.8rem 2rem;
       text-align: center;
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--blocker-card-shadow);
+      border: 1px solid var(--blocker-card-border);
       animation: fadeInUp 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .blocker-icon {
       font-size: 4.5rem;
       margin-bottom: 1.2rem;
-      display: inline-block;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 8px 15px rgba(0, 160, 255, 0.5));
     }
 
     .blocker-title {
       font-size: 2rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #FFFFFF, #A0B3FF);
+      background: var(--blocker-title-gradient);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 0.75rem;
+      transition: background 0.5s;
     }
 
     .blocker-sub {
-      font-size: 1rem;
-      color: #cdd9ff;
-      margin-bottom: 1.8rem;
-      line-height: 1.4;
-      font-weight: 500;
-      opacity: 0.9;
+      color: var(--blocker-sub-color);
+      transition: color 0.5s;
     }
 
     .blocker-desc {
-      font-size: 0.85rem;
-      color: #9aa9cf;
-      margin-bottom: 2rem;
-      background: rgba(0,0,0,0.3);
-      padding: 0.6rem 1rem;
+      background: var(--blocker-desc-bg);
       border-radius: 2rem;
-      display: inline-block;
+      color: var(--blocker-desc-color);
+      transition: all 0.5s;
     }
 
     .blocker-note {
-      font-size: 0.75rem;
-      color: #6d7ba3;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      padding-top: 1.2rem;
-      margin-top: 0.5rem;
+      color: var(--blocker-note-color);
+      transition: color 0.5s;
     }
 
     @media (max-width: 680px) {
       .control-panel {
         padding: 1.2rem;
       }
-      .hero h1 {
-        font-size: 1.4rem;
-      }
       .btn-primary {
-        padding: 0.7rem 1.3rem;
+        padding: 0.8rem 1.3rem;
       }
-      .player-area {
-        padding: 0 1rem 1.5rem;
+      .theme-toggle-wrapper {
+        top: 1rem;
+        right: 1rem;
       }
-      .bottom-interface-area {
-        justify-content: flex-end;
-        padding-right: 0.2rem;
-      }
-      .interface-mini-selector {
-        transform: scale(0.85);
-        transform-origin: right center;
-      }
-      .custom-select-mini {
-        min-width: 130px;
+      .theme-toggle {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- 移动端拦截层（默认隐藏，仅移动端显示） -->
+<!-- 主题切换按钮 -->
+<div class="theme-toggle-wrapper">
+  <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+    <span class="theme-icon">🌙</span>
+    <span class="theme-text">暗色</span>
+  </button>
+</div>
+
+<!-- 移动端拦截层 -->
 <div id="mobileBlocker" class="mobile-blocker" style="display: none;">
   <div class="blocker-card">
     <div class="blocker-icon">🖥️⛔</div>
     <div class="blocker-title">仅限电脑端访问</div>
-    <div class="blocker-sub">当前设备为手机/平板</div>
-    <div class="blocker-desc">wen提醒你:专为桌面端设计-请使用Windows/macOS/Linux等桌面设备访问</div>
-    <div class="blocker-note">User-Agent 检测 • 为了更好的播放兼容性</div>
+    <div class="blocker-sub" style="margin-bottom: 1rem;">当前设备为手机/平板</div>
+    <div class="blocker-desc" style="margin:1.5rem 0; padding: 0.8rem 1.5rem;">wen提醒你:工具专为桌面端设计<br>请使用 Windows PC / Mac / Linux 访问</div>
+    <div class="blocker-note" style="padding-top: 1rem;">User-Agent 检测 • 更好的播放兼容性</div>
   </div>
 </div>
 
@@ -408,15 +724,14 @@
 <div class="player-container" id="playerContainer">
   <div class="hero">
     <img class="img1" src="https://wimg.588ku.com/gif320/24/07/09/5574462e73a248c2b7e73eb38364cf7d.gif" alt="logo">
-    <div class="sub"></div>
     <div class="sub">平台通用API</div>
   </div>
 
   <div class="control-panel">
     <div class="url-input-wrapper" style="margin-top:0;">
-      <label class="label-style" for="videoUrl">🔗 视频链接 / 影片名称 (支持URL或关键词)</label>
+      <label class="label-style" for="videoUrl">🔗 视频链接 / 影片名称</label>
       <div class="input-group">
-        <input type="text" id="videoUrl" class="url-input" placeholder="例如: https://v.qq.com/x/cover/xxx.html 或 搜索: 流浪地球2" value="">
+        <input type="text" id="videoUrl" class="url-input" placeholder="例如: https://v.qq.com/... 或 流浪地球2" value="">
         <button id="playBtn" class="btn-primary">▶ 立即播放</button>
       </div>
     </div>
@@ -425,7 +740,7 @@
       <a class="example-badge" href="https://www.iqiyi.com/">🎬 爱奇艺</a>
       <a class="example-badge" href="https://www.bilibili.com/">📺 哔哩哔哩</a>
       <a class="example-badge" href="https://v.youku.com/">🎥 优酷</a>
-      <span class="info-note">💡 点击示例快速填充 | 部分接口支持搜片名</span>
+      <span class="info-note">💡 友情链接 | 部分接口支持搜片名</span>
     </div>
   </div>
 
@@ -436,54 +751,72 @@
 
     <div class="bottom-interface-area">
       <div class="interface-mini-selector">
-        <span class="mini-label">⚙️ 请选择接口</span>
+        <span class="mini-label">⚙️ 接口</span>
         <select class="custom-select-mini" id="jk" name="a">
           <option value="https://jx.xmflv.com/?url=" selected>默认API</option>
           <option value="//z1.m1907.top/?jx=">搜影片名称专用</option>
-          <option value="https://jx.xmflv.cc/?url=">超清VIP视频解析</option>
-          <option value="https://www.8090.la/8090/?url=">备用API</option>
+          <option value="https://jx.xmflv.cc/?url=">超清VIP解析</option>
+          <option value="https://www.8090.la/8090/?url=">vip解析1</option>
+          <option value="https://jx.m3u8.tv/jiexi/?url=">vip解析2</option>
+          <option value="https://jx.parwix.com:4433/player/?url=">vip解析3</option>
           <option value="https://jx.nnxv.cn/tv.php?url=">Q1</option>
           <option value="https://jx.2s0.cn/player/?url=">Q2</option>
         </select>
       </div>
     </div>
-
-    <div id="statusMessage" class="status-text">✨ 选择API，输入视频地址后点击播放</div>
+    <div id="statusMessage" class="status-text">✨选择API，输入地址播放</div>
   </div>
-
   <footer>
-    ⚡ 提示：解析接口来源于网络，仅供体验。如部分接口失效可切换线路，若影片需搜索名称请选用「搜影片名称专用」等接口。
-    ⚡ 如遇广告请忽略 · 请使用Windows/macOS/Linux等桌面设备访问
+    ⚡ 解析接口来源于网络 · 如失效请切换线路
   </footer>
 </div>
 
 <script>
   (function() {
+    // ==================== 主题切换 ====================
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+    const themeText = themeToggle.querySelector('.theme-text');
+    const htmlElement = document.documentElement;
+
+    // 检查本地存储中的主题偏好
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateThemeUI(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeUI(newTheme);
+
+      // 更新状态消息颜色
+      const statusDiv = document.getElementById('statusMessage');
+      if (statusDiv && !statusDiv.classList.contains('status-error')) {
+        statusDiv.style.color = '';
+        statusDiv.style.background = '';
+      }
+    });
+
+    function updateThemeUI(theme) {
+      if (theme === 'light') {
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '亮色';
+      } else {
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '暗色';
+      }
+    }
+
     // ==================== UA检测 ====================
     function isMobileDevice() {
       const ua = navigator.userAgent;
-
-      // 移动设备特征检测
       const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone|Mobile|Tablet|PlayBook|Silk/i;
-
-      // 检测iPad (iPadOS 13+ 会将iPad伪装成Mac，但仍有独特特征)
-      const isIPad = /iPad/i.test(ua) ||
-                     (/Macintosh/i.test(ua) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1);
-
-      // 检测安卓平板
+      const isIPad = /iPad/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints && navigator.maxTouchPoints > 1);
       const isAndroidTablet = /Android/i.test(ua) && !/Mobile/i.test(ua);
-
-      // 检测触摸屏且屏幕较小
       const isSmallTouch = /Touch/i.test(ua) && window.innerWidth <= 1024;
-
-      const result = mobileRegex.test(ua) || isIPad || isAndroidTablet || isSmallTouch;
-
-      // 调试输出（可在控制台查看）
-      console.log('[UA检测] UserAgent:', ua);
-      console.log('[UA检测] 是否移动设备:', result);
-      console.log('[UA检测] 详细 - isIPad:', isIPad, 'isAndroidTablet:', isAndroidTablet);
-
-      return result;
+      return mobileRegex.test(ua) || isIPad || isAndroidTablet || isSmallTouch;
     }
 
     const isMobile = isMobileDevice();
@@ -491,46 +824,16 @@
     const playerContainer = document.getElementById('playerContainer');
 
     if (isMobile) {
-      // 显示拦截遮罩
-      if (blocker) {
-        blocker.style.display = 'flex';
-      }
-      // 隐藏播放器内容（可选，但遮罩已覆盖）
+      if (blocker) blocker.style.display = 'flex';
       if (playerContainer) {
-        playerContainer.style.opacity = '0.3';
+        playerContainer.style.opacity = '0.25';
         playerContainer.style.pointerEvents = 'none';
       }
-      // 彻底禁用iframe加载
       const frame = document.getElementById('videoFrame');
       if (frame) frame.src = 'about:blank';
-
-      // 禁用所有交互元素
-      const interactiveElements = document.querySelectorAll('#videoUrl, #playBtn, #jk, .example-badge, .custom-select-mini');
-      interactiveElements.forEach(el => {
-        if (el) {
-          el.disabled = true;
-          el.style.pointerEvents = 'none';
-          el.style.opacity = '0.5';
-          if (el.tagName === 'INPUT') el.readOnly = true;
-        }
-      });
-
-      // 修改状态文字
-      const statusMsg = document.getElementById('statusMessage');
-      if (statusMsg) {
-        statusMsg.innerHTML = '🚫 访问受限：当前设备不支持';
-        statusMsg.style.background = '#fce8e6';
-        statusMsg.style.color = '#c5221f';
-      }
-
-      console.log('[访问限制] ，已拦截访问');
-      return; // 终止执行，不绑定任何播放功能
+      return;
     }
 
-    // ==================== PC端正常逻辑 ====================
-    console.log('[访问授权] ，正常加载播放器');
-
-    // 确保播放器正常显示
     if (playerContainer) {
       playerContainer.style.opacity = '1';
       playerContainer.style.pointerEvents = 'auto';
@@ -544,91 +847,50 @@
 
     function setStatus(message, isError = false) {
       statusDiv.innerHTML = message;
-      statusDiv.style.color = isError ? '#d93025' : '#5f6368';
-      statusDiv.style.background = isError ? '#fce8e6' : '#f8f9fa';
-      setTimeout(() => {
-        if (!isError && statusDiv.innerHTML === message) {
-          statusDiv.style.color = '#5f6368';
-          statusDiv.style.background = '#f8f9fa';
-        }
-      }, 4000);
+      if (isError) {
+        statusDiv.classList.add('status-error');
+      } else {
+        statusDiv.classList.remove('status-error');
+      }
     }
 
     function buildAndPlay() {
       let rawInterface = selectEl.value;
       let videoInput = videoUrlInput.value.trim();
-
       if (!videoInput) {
-        setStatus('❓ 请输入视频链接或影片名称（部分接口支持直接搜片名）', true);
+        setStatus('❓ 请输入视频链接或影片名称', true);
         return;
       }
-
       let finalInterface = rawInterface;
       if (rawInterface.startsWith('//')) {
         finalInterface = window.location.protocol + rawInterface;
       }
-
-      const encodedParam = encodeURIComponent(videoInput);
-      let parserUrl = finalInterface + encodedParam;
-
+      const parserUrl = finalInterface + encodeURIComponent(videoInput);
       try {
         new URL(parserUrl);
       } catch (e) {
-        setStatus('❌ 生成的解析地址无效，请检查接口配置或输入内容', true);
+        setStatus('❌ 解析地址无效', true);
         return;
       }
-
-      setStatus(`⏳ 正在通过「${selectEl.options[selectEl.selectedIndex]?.text || '解析接口'}」加载视频 ...`);
+      setStatus('⏳ 正在加载...');
       videoFrame.src = parserUrl;
-
-      const loadHandler = () => {
-        setStatus(`✅ 已加载解析地址，等待视频响应。若长时间无画面可尝试切换接口`);
-        videoFrame.removeEventListener('load', loadHandler);
-        videoFrame.removeEventListener('error', errorHandler);
-      };
-      const errorHandler = () => {
-        setStatus(`⚠️ 视频播放器加载出错，该接口可能失效或视频源限制，请更换接口重试`, true);
-        videoFrame.removeEventListener('load', loadHandler);
-        videoFrame.removeEventListener('error', errorHandler);
-      };
-      videoFrame.addEventListener('load', loadHandler, { once: true });
-      videoFrame.addEventListener('error', errorHandler, { once: true });
-
-      console.log(`[解析] 接口: ${finalInterface} , 完整地址: ${parserUrl}`);
+      videoFrame.onload = () => setStatus('✅ 已加载，等待视频响应');
+      videoFrame.onerror = () => setStatus('⚠️ 加载出错，尝试更换接口', true);
     }
 
-    function handlePlay() {
-      buildAndPlay();
-    }
-
+    playBtn.addEventListener('click', buildAndPlay);
     videoUrlInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        handlePlay();
+        buildAndPlay();
       }
     });
-
     selectEl.addEventListener('change', () => {
-      const selectedText = selectEl.options[selectEl.selectedIndex]?.text || '接口';
-      setStatus(`🔁 已切换到「${selectedText}」接口，再次点击播放即可使用新线路`, false);
+      setStatus('🔁 接口已切换，点击播放生效');
     });
 
-    playBtn.addEventListener('click', handlePlay);
-
-    // 示例标签填充功能
-    const exampleBadges = document.querySelectorAll('.example-badge[data-url]');
-    exampleBadges.forEach(badge => {
-      badge.addEventListener('click', (e) => {
-        e.preventDefault();
-        const url = badge.getAttribute('data-url');
-        if(url) {
-          videoUrlInput.value = url;
-          setStatus(`已填充示例地址: ${url}，点击播放即可解析`, false);
-        }
-      });
+    document.querySelectorAll('.example-badge').forEach(badge => {
     });
-
-    setStatus('✨ 欢迎，电脑端已授权 | 选择API，输入视频地址后点击播放', false);
   })();
 </script>
 </body>
